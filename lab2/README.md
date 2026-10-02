@@ -39,15 +39,3 @@ The application runs as `acs730web`, a system account with no login shell and no
 ## Notes
 
 - `acs730admin` did not get passwordless sudo from `wheel` membership alone on this image, so I added a drop-in file in `/etc/sudoers.d/` (checked with `visudo -c`) to give it passwordless sudo.
-
-## Experiments
-
-### Experiment 1: <name, e.g. start without enable>
-- **Prediction:** <what you expect to happen, written before you run it>
-- **What I saw:** <the actual command output or behavior>
-- **Explanation:** <2-3 sentences on why>
-
-### Experiment 2: <name, e.g. drop the capability>
-- **Prediction:**
-- **What I saw:**
-- **Explanation:**
