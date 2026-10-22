@@ -22,3 +22,25 @@ Runs: baseline 39711565606, cache miss 39712078659, cache hit 39712260688.
 
 - **Composite action (`python-deps`):** the dependency setup is a few steps that must run on the same runner as the tests, inside the test job, so it is an action.
 - **Reusable workflow (`docker-build`):** the image build is a whole job with its own runner that needs `packages: write`, which the test job must not have, so it is a workflow.
+
+## Build and run
+
+    cd lab4
+    docker build -t acs730-lab4:slim .
+    docker run -d --name lab4 -p 8000:8000 acs730-lab4:slim
+    curl http://localhost:8000/healthz    # {"status":"ok","version":"dev"}
+
+## Image sizes
+
+| Image | Base image | Size | Rebuild after one-line code change |
+|---|---|---|---|
+| naive | python:latest (1.13GB) | 1.15GB | 9s |
+| slim | python:3.12-slim-bookworm (124MB) | 130MB | 2s |
+
+- **Base image:** about 1.0GB of the roughly 1.02GB gap comes from the base image (python:latest at 1.13GB against python:3.12-slim-bookworm at 124MB). The app and dependencies add only about 20MB to naive and 6MB to slim.
+- **Dependency layer:** on a code-only rebuild, pip install is CACHED in the slim image, because requirements.txt is copied and installed before app.py. In the naive image it re-runs every time, because COPY . . comes first and any code edit invalidates it and every layer after it.
+- **.dockerignore:** it kept .git, .github, evidence/, *.png, *.md, __pycache__/ and the Dockerfiles out of the build context, so a careless COPY . . can't pull them in.
+
+## Why SHA tags, not latest
+
+A sha- tag points at one commit forever, so "which code is running in this image" always has an answer. latest points at whatever was pushed last.
