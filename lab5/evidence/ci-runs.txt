@@ -1,3 +1,5 @@
+completed	success	Lab 5	lab5-ci	lab5	pull_request	42287114504	2m21s	2026-11-06T20:17:43Z
+completed	failure	Lab 5	lab5-ci	lab5	pull_request	42286939029	19s	2026-11-06T20:16:29Z
 completed	success	Lab 5	lab5-ci	lab5	pull_request	42285172710	2m16s	2026-11-06T20:04:25Z
 completed	failure	Lab 5	lab5-ci	lab5	pull_request	42284725936	8s	2026-11-06T20:01:23Z
 completed	failure	Lab 5	lab5-ci	lab5	pull_request	42284624575	10s	2026-11-06T20:00:44Z
