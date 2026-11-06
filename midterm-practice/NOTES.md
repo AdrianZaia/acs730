@@ -2,8 +2,4 @@
 
 ## Task 5: git hygiene
 
-<!-- Replace this line with one sentence explaining why deleting the .tfstate
-     file and the credential string in your latest commit is not sufficient
-     by itself. -->
-
-TODO
+Deleting the file and the credential in a new commit does not remove them from earlier commits, so anyone with the repo can still recover them from git history; the credential must be treated as compromised and rotated, and the history rewritten if the secret has to be purged.
