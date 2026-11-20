@@ -1,0 +1,41 @@
+
+[0m[1m[32mNo changes.[0m[1m No objects need to be destroyed.[0m
+
+[0mEither you have not created any objects yet or the existing objects were
+already deleted outside of Terraform.
+[0m[1m[32m
+Destroy complete! Resources: 0 destroyed.
+[0msnapshot behind the AMI: snap-0b09883ea74a453ec
+{
+    "Return": true,
+    "DeleteSnapshotResults": []
+}
+remove_bucket: acs730-lab6-ssm-973858201364
+
+== EC2 instances
+   i-04f7e4970703945d9  running  t3.medium  acs730-workstation   (your workstation -- keep this)
+
+== Your AMIs (and their snapshots)
+
+== Unattached EBS volumes
+
+== Snapshots you own
+   snap-0878d1686fd3a1f66  8GiB  Created by CreateImage(i-0c681046eec379938) for ami-04ea763e40bd697ac
+      -> aws ec2 delete-snapshot --snapshot-id snap-0878d1686fd3a1f66
+
+== Non-default security groups
+   sg-0f996408e4e3e85a1  launch-wizard-3
+      -> aws ec2 delete-security-group --group-id sg-0f996408e4e3e85a1
+   sg-0110350c755cfdc64  launch-wizard-2
+      -> aws ec2 delete-security-group --group-id sg-0110350c755cfdc64
+   sg-008e72c50c43235d5  acs730-lab2-sg
+      -> aws ec2 delete-security-group --group-id sg-008e72c50c43235d5
+   sg-0e66edb43929bf536  launch-wizard-1
+      -> aws ec2 delete-security-group --group-id sg-0e66edb43929bf536
+   sg-0f162d5fd0a5da898  acs730-week2-sg
+      -> aws ec2 delete-security-group --group-id sg-0f162d5fd0a5da898
+
+== Terraform state files that still track resources
+
+Review the items above. This script deleted nothing.
+
