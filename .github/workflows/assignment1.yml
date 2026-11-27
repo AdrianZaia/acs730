@@ -2,10 +2,10 @@ name: assignment1
 
 on:
   pull_request:
-    paths: ['assignment1/**']
+    paths: ['assignment1/**', '!assignment1/REPORT.md']
   push:
     branches: [main]
-    paths: ['assignment1/**']
+    paths: ['assignment1/**', '!assignment1/REPORT.md']
 
 concurrency:
   group: assignment1-${{ github.ref }}
