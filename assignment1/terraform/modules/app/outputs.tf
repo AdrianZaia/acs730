@@ -22,3 +22,14 @@ output "web_url" {
   description = "URL to curl once the instance has booted."
   value       = "http://${aws_instance.web.public_ip}/"
 }
+
+output "db_password" {
+  description = "Application secret read from SSM Parameter Store."
+  value       = data.aws_ssm_parameter.db_password.value
+  sensitive   = true
+}
+
+output "cpu_alarm_name" {
+  description = "Name of the CloudWatch CPU alarm."
+  value       = aws_cloudwatch_metric_alarm.cpu_high.alarm_name
+}
